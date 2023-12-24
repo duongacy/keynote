@@ -140,7 +140,7 @@ export function Speakers() {
                       >
                         <Image
                           className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-110"
-                          src={process.env.API_ENDPOINT + speaker.image.url}
+                          src={'http://14.225.254.88:1337' + speaker.image.url}
                           fill
                           alt=""
                           priority
