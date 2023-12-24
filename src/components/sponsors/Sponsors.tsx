@@ -23,7 +23,7 @@ export function Sponsors() {
               key={sponsor.name}
               className="flex items-center justify-center"
             >
-              <Image src={process.env.API_ENDPOINT + sponsor.logo.url} alt={sponsor.name} unoptimized width={sponsor.logo.width} height={sponsor.logo.height} />
+              <Image src={'http://14.225.254.88:1337' + sponsor.logo.url} alt={sponsor.name} unoptimized width={sponsor.logo.width} height={sponsor.logo.height} />
             </div>
           ))}
         </div>
