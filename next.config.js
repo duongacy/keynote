@@ -4,7 +4,7 @@ const nextConfig = {
         domains: ['0.0.0.0']
     },
     env: {
-        API_ENDPOINT: 'http://14.225.254.88::1337',
+        API_ENDPOINT: 'http://14.225.254.88:1337',
     },
 }
 
