@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['127.0.0.1']
+        domains: ['0.0.0.0']
     },
     env: {
-        API_ENDPOINT: 'http://127.0.0.1:1337',
+        API_ENDPOINT: '0.0.0.0:1337',
     },
 }
 
