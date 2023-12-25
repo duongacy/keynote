@@ -374,14 +374,14 @@ Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_re
 
 /***/ }),
 
-/***/ 822:
+/***/ 8357:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 9882));
 Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 9700));
 Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 5101));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 9317));
-Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 4591))
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 4591));
+Promise.resolve(/* import() eager */).then(__webpack_require__.bind(__webpack_require__, 9317))
 
 /***/ }),
 
@@ -1529,6 +1529,7 @@ function Speakers() {
                                                                     fill: true,
                                                                     alt: "",
                                                                     priority: true,
+                                                                    unoptimized: true,
                                                                     sizes: "(min-width: 1280px) 17.5rem, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
                                                                 })
                                                             })
