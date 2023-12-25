@@ -5800,7 +5800,7 @@ function createProxy(moduleId) {
 
 /***/ }),
 
-/***/ 8225:
+/***/ 4663:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -8457,7 +8457,7 @@ _export(exports, {
         return NotFoundBoundary;
     }
 });
-const { default: AppRouter } = __webpack_require__(8225);
+const { default: AppRouter } = __webpack_require__(4663);
 const { default: LayoutRouter } = __webpack_require__(7149);
 const { default: RenderFromTemplateContext } = __webpack_require__(9278);
 const { staticGenerationAsyncStorage } = __webpack_require__(3539);
