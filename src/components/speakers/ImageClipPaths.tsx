@@ -1,7 +1,8 @@
 'use client';
 export function ImageClipPaths({
-  id, ...props
-}: React.ComponentPropsWithoutRef<'svg'> & { id: string; }) {
+  id,
+  ...props
+}: React.ComponentPropsWithoutRef<'svg'> & { id: string }) {
   return (
     <svg aria-hidden="true" width={0} height={0} {...props}>
       <defs>

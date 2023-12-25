@@ -8,7 +8,8 @@ export function ArrowRightIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         stroke="currentColor"
         strokeWidth="2"
         strokeLinecap="round"
-        strokeLinejoin="round" />
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }

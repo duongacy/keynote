@@ -1,14 +1,14 @@
-import Image from 'next/image'
-import clsx from 'clsx'
+import Image from 'next/image';
+import clsx from 'clsx';
 
-import backgroundImage from '@/images/background.jpg'
+import backgroundImage from '@/images/background.jpg';
 
 export function BackgroundImage({
   className,
   position = 'left',
 }: {
-  className?: string
-  position?: 'left' | 'right'
+  className?: string;
+  position?: 'left' | 'right';
 }) {
   return (
     <div
@@ -35,5 +35,5 @@ export function BackgroundImage({
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white" />
     </div>
-  )
+  );
 }

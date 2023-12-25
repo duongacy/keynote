@@ -1,25 +1,17 @@
 'use client';
 import Image from 'next/image';
 
-import { getSignupSingle, getSignupSingleKey } from '@/apis/signup-single';
+import { useGetSignupSingle } from '@/apis-hooks/signup-single';
 import { Button } from '@/components/Button';
 import { Container } from '@/components/Container';
 import backgroundImage from '@/images/background-newsletter.jpg';
-import { useQuery } from '@tanstack/react-query';
 import { ArrowRightIcon } from '../ArrowRightIcon';
 
 export function Newsletter() {
-  const signupQuery = useQuery({
-    queryKey: getSignupSingleKey(),
-    queryFn: getSignupSingle
-  })
+  const signupQuery = useGetSignupSingle();
 
-  if (signupQuery.isLoading && !signupQuery.data) {
-    return 'loading'
-  }
-
-  if (signupQuery.isError) {
-    return 'error'
+  if (signupQuery.isLoading || !signupQuery.data || signupQuery.isError) {
+    return null;
   }
 
   return (
@@ -47,13 +39,13 @@ export function Newsletter() {
               <h3 className="text-lg font-semibold tracking-tight text-primary-900">
                 Sign up to our newsletter <span aria-hidden="true">&darr;</span>
               </h3>
-              <div className="mt-5 flex rounded-3xl bg-white py-2.5 pr-2.5 shadow-xl shadow-primary-900/5 focus-within:ring-2 focus-within:ring-primary-900 overflow-hidden">
+              <div className="mt-5 flex overflow-hidden rounded-3xl bg-white py-2.5 pr-2.5 shadow-xl shadow-primary-900/5 focus-within:ring-2 focus-within:ring-primary-900">
                 <input
                   type="email"
                   required
                   placeholder="Email address"
                   aria-label="Email address"
-                  className="-my-2.5 flex-auto bg-transparent pl-6 pr-2.5 text-base text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
+                  className="bg-transparent -my-2.5 flex-auto pl-6 pr-2.5 text-base text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
                 />
                 <Button type="submit">
                   <span className="sr-only sm:not-sr-only">Sign up today</span>
@@ -67,5 +59,5 @@ export function Newsletter() {
         </div>
       </Container>
     </section>
-  )
+  );
 }

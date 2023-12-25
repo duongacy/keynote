@@ -1,7 +1,7 @@
-import { Button } from '@/components/Button'
-import { Container } from '@/components/Container'
-import { DiamondIcon } from '@/components/DiamondIcon'
-import { Logo } from '@/components/Logo'
+import { Button } from '@/components/Button';
+import { Container } from '@/components/Container';
+import { DiamondIcon } from '@/components/DiamondIcon';
+import { Logo } from '@/components/Logo';
 
 export function Header() {
   return (
@@ -16,7 +16,7 @@ export function Header() {
               <time dateTime="2022-04-04">04</time>-
               <time dateTime="2022-04-06">06 of April, 2022</time>
             </p>
-            <DiamondIcon className="h-1.5 w-1.5 overflow-visible fill-current stroke-current" />
+            <DiamondIcon className="fill-current stroke-current h-1.5 w-1.5 overflow-visible" />
             <p>Los Angeles, CA</p>
           </div>
         </div>
@@ -25,5 +25,5 @@ export function Header() {
         </div>
       </Container>
     </header>
-  )
+  );
 }

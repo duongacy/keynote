@@ -1,13 +1,19 @@
-import { TDay } from '@/apis/day/type';
+import { TDay } from '@/apis-hooks/day/type';
 import clsx from 'clsx';
 
-export function TimeSlots({ day, className }: { day: TDay; className?: string; }) {
+export function TimeSlots({
+  day,
+  className,
+}: {
+  day: TDay;
+  className?: string;
+}) {
   return (
     <ol
       role="list"
       className={clsx(
         className,
-        'space-y-8 bg-white/60 px-10 py-14 text-center shadow-xl shadow-primary-900/5 backdrop-blur'
+        'space-y-8 bg-white/60 px-10 py-14 text-center shadow-xl shadow-primary-900/5 backdrop-blur',
       )}
     >
       {day.timeSlots.map((timeSlot, timeSlotIndex) => (

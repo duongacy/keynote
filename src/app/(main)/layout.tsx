@@ -7,10 +7,12 @@ const client = new QueryClient();
 export default function MainLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  return <QueryClientProvider client={client}>
-    <Layout>{children}</Layout>
-    <ReactQueryDevtools />
-  </QueryClientProvider>
+  return (
+    <QueryClientProvider client={client}>
+      <Layout>{children}</Layout>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
+  );
 }

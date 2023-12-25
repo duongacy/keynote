@@ -1,7 +1,6 @@
-import headlessuiPlugin from '@headlessui/tailwindcss'
-import { type Config } from 'tailwindcss'
-const colors = require('tailwindcss/colors')
-
+import headlessuiPlugin from '@headlessui/tailwindcss';
+import { type Config } from 'tailwindcss';
+const colors = require('tailwindcss/colors');
 
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
@@ -25,7 +24,8 @@ export default {
       primary: colors.blue,
       secondary: colors.indigo,
       neutral: colors.gray,
-      white: colors.white
+      white: colors.white,
+      sky: colors.sky,
     },
     extend: {
       borderRadius: {
@@ -39,8 +39,7 @@ export default {
       maxWidth: {
         '2xl': '40rem',
       },
-
     },
   },
   plugins: [headlessuiPlugin],
-} satisfies Config
+} satisfies Config;

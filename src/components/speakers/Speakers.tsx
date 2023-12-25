@@ -1,53 +1,46 @@
-'use client'
-import { getAllDays } from '@/apis/day'
-import { getSpeakersSingle, getSpeakersSingleKey } from '@/apis/speaker-single'
-import { Container } from '@/components/Container'
-import { DiamondIcon } from '@/components/DiamondIcon'
-import { Tab } from '@headlessui/react'
-import { useQuery } from '@tanstack/react-query'
-import clsx from 'clsx'
-import moment from 'moment'
-import Image from 'next/image'
-import { useEffect, useId, useState } from 'react'
-import { ImageClipPaths } from './ImageClipPaths'
-
+'use client';
+import { useGetAllDays } from '@/apis-hooks/day';
+import { useGetSpeakersSingle } from '@/apis-hooks/speaker-single';
+import { Container } from '@/components/Container';
+import { DiamondIcon } from '@/components/DiamondIcon';
+import { Tab } from '@headlessui/react';
+import clsx from 'clsx';
+import moment from 'moment';
+import Image from 'next/image';
+import { useEffect, useId, useState } from 'react';
+import { ImageClipPaths } from './ImageClipPaths';
 
 export function Speakers() {
-  let id = useId()
-  let [tabOrientation, setTabOrientation] = useState('horizontal')
+  let id = useId();
+  let [tabOrientation, setTabOrientation] = useState('horizontal');
 
   useEffect(() => {
-    let lgMediaQuery = window.matchMedia('(min-width: 1024px)')
+    let lgMediaQuery = window.matchMedia('(min-width: 1024px)');
 
     function onMediaQueryChange({ matches }: { matches: boolean }) {
-      setTabOrientation(matches ? 'vertical' : 'horizontal')
+      setTabOrientation(matches ? 'vertical' : 'horizontal');
     }
 
-    onMediaQueryChange(lgMediaQuery)
-    lgMediaQuery.addEventListener('change', onMediaQueryChange)
+    onMediaQueryChange(lgMediaQuery);
+    lgMediaQuery.addEventListener('change', onMediaQueryChange);
 
     return () => {
-      lgMediaQuery.removeEventListener('change', onMediaQueryChange)
-    }
-  }, [])
+      lgMediaQuery.removeEventListener('change', onMediaQueryChange);
+    };
+  }, []);
 
-  const speakerQuery = useQuery({
-    queryKey: ['days'],
-    queryFn: getAllDays
-  })
+  const speakerQuery = useGetAllDays();
 
-  const speakersSingleQuery = useQuery({
-    queryKey: getSpeakersSingleKey(),
-    queryFn: getSpeakersSingle
-  })
+  const speakersSingleQuery = useGetSpeakersSingle();
 
-  if (speakersSingleQuery.isLoading && !speakersSingleQuery.data) {
-    return 'loading'
+  if (
+    speakersSingleQuery.isLoading ||
+    !speakersSingleQuery.data ||
+    speakerQuery.isError
+  ) {
+    return null;
   }
 
-  if (speakersSingleQuery.isError) {
-    return 'error'
-  }
   return (
     <section
       id="speakers"
@@ -61,10 +54,10 @@ export function Speakers() {
             id="speakers-title"
             className="font-display text-4xl font-medium tracking-tighter text-primary-600 sm:text-5xl"
           >
-            {speakersSingleQuery.data!.title}
+            {speakersSingleQuery.data.title}
           </h2>
           <p className="mt-4 font-display text-2xl tracking-tight text-primary-900">
-            {speakersSingleQuery.data!.description}
+            {speakersSingleQuery.data.description}
           </p>
         </div>
         <Tab.Group
@@ -77,7 +70,7 @@ export function Speakers() {
             <Tab.List className="grid auto-cols-auto grid-flow-col justify-start gap-x-8 gap-y-10 whitespace-nowrap px-4 sm:mx-auto sm:max-w-2xl sm:grid-cols-3 sm:px-0 sm:text-center lg:grid-flow-row lg:grid-cols-1 lg:text-left">
               {({ selectedIndex }) => (
                 <>
-                  {(speakerQuery.data ?? []).map((day, dayIndex) => (
+                  {speakerQuery.data?.map((day, dayIndex) => (
                     <div key={day.name} className="relative lg:pl-8">
                       <DiamondIcon
                         className={clsx(
@@ -140,13 +133,14 @@ export function Speakers() {
                       >
                         <Image
                           className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-110"
-                          src={'http://14.225.254.88:1337' + speaker.image.url}
+                          src={process.env.API_ENDPOINT + speaker.image.url}
                           fill
                           alt=""
                           priority
                           unoptimized
                           sizes="(min-width: 1280px) 17.5rem, (min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
                         />
+                        {/* unoptimized */}
                       </div>
                     </div>
                     <h3 className="mt-8 font-display text-xl font-bold tracking-tight text-neutral-900">
@@ -163,7 +157,5 @@ export function Speakers() {
         </Tab.Group>
       </Container>
     </section>
-  )
+  );
 }
-
-

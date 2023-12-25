@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        domains: ['http://14.225.254.88', '127.0.0.1']
-    },
-    env: {
-        API_ENDPOINT: 'http://14.225.254.88:1337',
-    },
-}
+  images: {
+    domains: [process.env.IMAGE_HOST1],
+  },
+  env: {
+    API_ENDPOINT: process.env.API_ENDPOINT,
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

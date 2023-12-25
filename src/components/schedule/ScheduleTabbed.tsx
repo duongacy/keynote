@@ -1,27 +1,27 @@
-'use client'
-import { useEffect, useState } from 'react'
-import { Tab } from '@headlessui/react'
-import clsx from 'clsx'
-import { DaySummary } from './DaySummary'
-import { TimeSlots } from './TimeSlots'
-import { TDay } from '@/apis/day/type'
+'use client';
+import { useEffect, useState } from 'react';
+import { Tab } from '@headlessui/react';
+import clsx from 'clsx';
+import { DaySummary } from './DaySummary';
+import { TimeSlots } from './TimeSlots';
+import { TDay } from '@/apis-hooks/day/type';
 
 export function ScheduleTabbed({ schedule }: { schedule: TDay[] }) {
-  let [tabOrientation, setTabOrientation] = useState('horizontal')
+  let [tabOrientation, setTabOrientation] = useState('horizontal');
   useEffect(() => {
-    let smMediaQuery = window.matchMedia('(min-width: 640px)')
+    let smMediaQuery = window.matchMedia('(min-width: 640px)');
 
     function onMediaQueryChange({ matches }: { matches: boolean }) {
-      setTabOrientation(matches ? 'vertical' : 'horizontal')
+      setTabOrientation(matches ? 'vertical' : 'horizontal');
     }
 
-    onMediaQueryChange(smMediaQuery)
-    smMediaQuery.addEventListener('change', onMediaQueryChange)
+    onMediaQueryChange(smMediaQuery);
+    smMediaQuery.addEventListener('change', onMediaQueryChange);
 
     return () => {
-      smMediaQuery.removeEventListener('change', onMediaQueryChange)
-    }
-  }, [])
+      smMediaQuery.removeEventListener('change', onMediaQueryChange);
+    };
+  }, []);
 
   return (
     <Tab.Group
@@ -61,5 +61,5 @@ export function ScheduleTabbed({ schedule }: { schedule: TDay[] }) {
         ))}
       </Tab.Panels>
     </Tab.Group>
-  )
+  );
 }
